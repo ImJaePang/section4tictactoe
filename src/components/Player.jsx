@@ -8,21 +8,21 @@ export default function Player({name, symbol}){
     };
     const [userName, setUserName] = useState(name);
 
-
+    let PlayerName = <span className="player-name">{userName}</span>;
+    if (isEditing){
+        PlayerName = <input type="text" required placeholder={userName}/>;
+    }
 
     return(
-        <li>
+    <li>
         <span className="player">
-            {isEditing ?
-                <input type="text" className="player-name" placeholder={userName}/>
-                : <span className="player-name">{userName}</span>
-            }
+            {PlayerName}
             <span className="player-symbol">{symbol}</span>
         </span>
         
-            <button onClick={handleEditBtn} >
-                {isEditing ? "Save" : "Edit"}
-            </button>
+        <button onClick={handleEditBtn} >
+            {isEditing ? "Save" : "Edit"}
+        </button>
             
         
         
