@@ -3,8 +3,8 @@ import { useState } from "react"
 export default function Player({name, symbol}){
 
     const [isEditing, setIsEditing] = useState(false);
-    const handleEditBtn = () =>{
-        setIsEditing(!isEditing)
+    function handleEditBtn (){
+        setIsEditing((editing)=>!editing);
     };
     const [userName, setUserName] = useState(name);
 
