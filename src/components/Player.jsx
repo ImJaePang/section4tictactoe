@@ -7,10 +7,13 @@ export default function Player({name, symbol}){
         setIsEditing((editing)=>!editing);
     };
     const [userName, setUserName] = useState(name);
+    function handleChange(event){
+        setUserName(event.target.value);
+    }
 
     let PlayerName = <span className="player-name">{userName}</span>;
     if (isEditing){
-        PlayerName = <input type="text" required placeholder={userName}/>;
+        PlayerName = <input type="text" required value={userName} onChange={handleChange}/>;
     }
 
     return(
