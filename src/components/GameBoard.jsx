@@ -8,17 +8,18 @@ const initialGameBoard = [
 export default function GameBoard(){
     return (
         <ol id="game-board">
-            {initialGameBoard.map((row, rowIndex)=>{
+            {initialGameBoard.map((row, rowIndex)=>(
                 <li key={rowIndex}>
                     <ol>
-                        {row.map((playerSelect, colIndex)=>{
+                        {row.map((playerSelect, colIndex)=>(
                             <li key={colIndex}>
                                 <button>{playerSelect}</button>
+                                
                             </li>
-                        })}
+                        ))}
                     </ol>
                 </li>
-            })}
+            ))}
         </ol>
     )
         
