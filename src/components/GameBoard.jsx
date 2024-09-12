@@ -7,7 +7,7 @@ const initialGameBoard = [
 ];
 
 
-export default function GameBoard(){
+export default function GameBoard({handleChangeSymbol, gamePlaySymbol}){
 
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
@@ -15,9 +15,11 @@ export default function GameBoard(){
 
         setGameBoard((prevGameBoard) => {
             const presentGameBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
-            presentGameBoard[rows][cols] = "X";
+            presentGameBoard[rows][cols] = gamePlaySymbol;
             return presentGameBoard;
         });
+
+        handleChangeSymbol();
     }
 
     return (
