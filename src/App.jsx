@@ -1,5 +1,6 @@
 import Player from "./components/Player";
 import GameBoard from "./components/GameBoard";
+import Log from "./components/Log"
 import { useState } from "react";
 
 
@@ -8,6 +9,23 @@ function App() {
   const [playerTurn, setPlayerTurn] = useState("X");
   function handleSquareSymbol(){
     setPlayerTurn((prevSymbol) => (prevSymbol === "X" ? "O" : "X" ));
+  }
+  const [gamePlay, setGamePlay] = useState([]);
+  function onHandleSquare(row, col){
+
+    setGamePlay((prevGamePlay) =>{
+
+      let playerSymbol = "X";
+
+      if(gamePlay.length > 0 && prevGamePlay[0].gamePlayer === "X"){
+        playerSymbol = "O";
+      }
+
+      const currentGamePlay = [{square : {rowIndex : row, colIndex : col}, gamePlayer : playerSymbol },...prevGamePlay];
+
+      return currentGamePlay;
+    });
+
   }
   
 
@@ -20,10 +38,11 @@ function App() {
           <Player name="Player2" symbol="O" isHighlight={playerTurn} />
           
         </ol>
-        <GameBoard handleChangeSymbol={handleSquareSymbol} gamePlaySymbol={playerTurn}/>
+        <GameBoard onChangeSquare={onHandleSquare} gameTurns={gamePlay}/>
       </div>
 
-      LOG
+      <Log/>
+
     </main>
   )
 }
