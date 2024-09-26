@@ -11,15 +11,20 @@ function App() {
     setPlayerTurn((prevSymbol) => (prevSymbol === "X" ? "O" : "X" ));
   }
   const [gamePlay, setGamePlay] = useState([]);
+
   function onHandleSquare(row, col){
+
+    //alert(row + col);
 
     setGamePlay((prevGamePlay) =>{
 
       let playerSymbol = "X";
 
-      if(gamePlay.length > 0 && prevGamePlay[0].gamePlayer === "X"){
+      if(prevGamePlay.length > 0 && prevGamePlay[0].gamePlayer === "X"){
         playerSymbol = "O";
       }
+
+      //alert(row + col);
 
       const currentGamePlay = [{square : {rowIndex : row, colIndex : col}, gamePlayer : playerSymbol },...prevGamePlay];
 

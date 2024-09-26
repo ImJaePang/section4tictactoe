@@ -7,7 +7,7 @@ const initialGameBoard = [
 ];
 
 
-export default function GameBoard({onHandleSquare, gameTurns}){
+export default function GameBoard({onChangeSquare, gameTurns}){
 
     // const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
@@ -38,7 +38,7 @@ export default function GameBoard({onHandleSquare, gameTurns}){
                     <ol>
                         {row.map((playerSelect, colIndex)=>(
                             <li key={colIndex}>
-                                <button onClick={()=>onHandleSquare(rowIndex,colIndex)}>
+                                <button onClick={()=>onChangeSquare(rowIndex, colIndex)}>
                                     {playerSelect}
                                 </button>
                             </li>
