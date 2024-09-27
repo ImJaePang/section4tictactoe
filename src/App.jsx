@@ -3,26 +3,30 @@ import GameBoard from "./components/GameBoard";
 import Log from "./components/Log"
 import { useState } from "react";
 
+function symbolChange(theGame){
+
+  let playerSymbol = "X";
+
+  if(theGame.length > 0 && theGame[0].gamePlayer === "X"){
+    playerSymbol = "O";
+  }
+
+  return playerSymbol;
+}
+
 
 function App() {
 
-  const [playerTurn, setPlayerTurn] = useState("X");
-  function handleSquareSymbol(){
-    setPlayerTurn((prevSymbol) => (prevSymbol === "X" ? "O" : "X" ));
-  }
   const [gamePlay, setGamePlay] = useState([]);
+
+  let playerSymbol = symbolChange(gamePlay);
+
 
   function onHandleSquare(row, col){
 
-    //alert(row + col);
-
     setGamePlay((prevGamePlay) =>{
 
-      let playerSymbol = "X";
-
-      if(prevGamePlay.length > 0 && prevGamePlay[0].gamePlayer === "X"){
-        playerSymbol = "O";
-      }
+      let playerSymbol = symbolChange(prevGamePlay);
 
       //alert(row + col);
 
@@ -39,14 +43,14 @@ function App() {
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player name="Player1" symbol="X" isHighlight={playerTurn} />
-          <Player name="Player2" symbol="O" isHighlight={playerTurn} />
+          <Player name="Player1" symbol="X" isHighlight={playerSymbol} />
+          <Player name="Player2" symbol="O" isHighlight={playerSymbol} />
           
         </ol>
         <GameBoard onChangeSquare={onHandleSquare} gameTurns={gamePlay}/>
       </div>
 
-      <Log/>
+      <Log logs={gamePlay} />
 
     </main>
   )
