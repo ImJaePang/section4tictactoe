@@ -1,21 +1,22 @@
 export default function Log ({logs}){
 
+
+
     return(
 
     <ol id="log"  >
-        <li>되는겨 마는겨</li>
-        <li>되는겨 마는겨</li>
-        <li>되는겨 마는겨</li>
-        <li>되는겨 마는겨</li>
-
         {logs.map((gamelog)=>{
-            // <li
-            //     key={`${log.square.rowIndex}${log.square.colIndex}`
-            // }>
-            <li >
-                {/* {log.gamePlayer} select {log.square.rowIndex},{log.square.colIndex} */}
-                its ok?? {gamelog.gamePlayer}
-            </li>
+
+            const {square, gamePlayer} = gamelog;
+            const {rowIndex, colIndex} = square;
+            const keyVal = `{rowIndex}{colIndex}`;
+
+            return (
+                <li key={keyVal} >
+                    {gamePlayer } play : {rowIndex}, {colIndex}
+                </li>
+            )
+
         })} 
 
     </ol>
