@@ -1,6 +1,6 @@
-return {
+
     
-    const WINNING_COMBINATION = [
+    export const WINNING_COMBINATION = [
     [
         {row: 0, column : 0}
         , {row: 0, column : 1}
@@ -50,4 +50,3 @@ return {
     ]
     
     ];
-}
