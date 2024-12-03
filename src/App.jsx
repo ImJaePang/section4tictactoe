@@ -38,6 +38,20 @@ function App() {
       gameBoard[rowIndex][colIndex] = gamePlayer;
   }
 
+  let winningParam;
+
+  for (combination of WINNING_COMBINATION){
+  //   const comb1 = gameBoard[combination[0].row][combination[0].column]; 
+  //   const comb2 = gameBoard[combination[1].row][combination[1].column]; 
+  //   const comb3 = gameBoard[combination[2].row][combination[2].column];
+    
+  //   if(comb1 && comb1 === comb2 && comb1 && comb3){
+  //     winningParam = true;
+  //   }
+    console.log("looping")
+
+  }
+
 
   function onHandleSquare(row, col){
 
@@ -66,6 +80,7 @@ function App() {
         </ol>
         <GameBoard onChangeSquare={onHandleSquare} board={gameBoard}/>
       </div>
+      
 
       <Log logs={gamePlay} />
 
