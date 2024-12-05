@@ -2,7 +2,7 @@ import Player from "./components/Player";
 import GameBoard from "./components/GameBoard";
 import Log from "./components/Log"
 import { useState } from "react";
-import { WINNING_COMBINATION } from "./components/winning-combination.js";
+import { WINNING_COMBINATIONS } from "./components/winning-combination.js";
 
 const initialGameBoard = [
   [null, null, null]
@@ -38,6 +38,20 @@ function App() {
       gameBoard[rowIndex][colIndex] = gamePlayer;
   }
 
+  let winningParam;
+
+
+  for (const combination of WINNING_COMBINATIONS){
+
+    const comb1 = gameBoard[combination[0].row][combination[0].column]; 
+    const comb2 = gameBoard[combination[1].row][combination[1].column]; 
+    const comb3 = gameBoard[combination[2].row][combination[2].column];
+    
+    if(comb1 && comb1 === comb2 && comb1 && comb3){
+      winningParam = true;
+    }
+  }
+
 
   function onHandleSquare(row, col){
 
@@ -65,10 +79,11 @@ function App() {
           
         </ol>
         <GameBoard onChangeSquare={onHandleSquare} board={gameBoard}/>
+      {winningParam ? <p>안녕</p> : <p>노안녕</p>}
       </div>
 
       <Log logs={gamePlay} />
-
+녕
     </main>
   )
 }
