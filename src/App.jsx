@@ -3,7 +3,6 @@ import GameBoard from "./components/GameBoard";
 import Log from "./components/Log"
 import { useState } from "react";
 import { WINNING_COMBINATIONS } from "./components/winning-combination.js";
-import GameOver from "./components/GameOver";
 
 const initialGameBoard = [
   [null, null, null]
@@ -49,7 +48,7 @@ function App() {
     const comb3 = gameBoard[combination[2].row][combination[2].column];
     
     if(comb1 && comb1 === comb2 && comb1 && comb3){
-      winningParam = comb1;
+      winningParam = true;
     }
   }
 
@@ -79,13 +78,12 @@ function App() {
           <Player name="Player2" symbol="O" isHighlight={playerSymbol} />
           
         </ol>
-
-        {winningParam && <GameOver winner={winningParam}  />}
-
         <GameBoard onChangeSquare={onHandleSquare} board={gameBoard}/>
+      {winningParam ? <p>안녕</p> : <p>노안녕</p>}
       </div>
 
       <Log logs={gamePlay} />
+녕
     </main>
   )
 }
