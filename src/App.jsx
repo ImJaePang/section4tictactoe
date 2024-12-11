@@ -30,7 +30,7 @@ function App() {
   let playerSymbol = symbolChange(gamePlay);
 
 
-  let gameBoard = initialGameBoard;
+  let gameBoard = [...initialGameBoard.map(array => [...array])];
 
   for(const gameTurn of gamePlay){
       const {square, gamePlayer} = gameTurn;
@@ -73,7 +73,7 @@ function App() {
 
   function rematchGame(){
     // alert();
-
+    setGamePlay([]);
     
   }
   
