@@ -48,11 +48,13 @@ function App() {
     const comb2 = gameBoard[combination[1].row][combination[1].column]; 
     const comb3 = gameBoard[combination[2].row][combination[2].column];
     
-    if(comb1 && comb1 === comb2 && comb1 && comb3){
+    if(comb1 && comb1 === comb2 && comb1 === comb3){
       winningParam = comb1;
     }
+
   }
 
+  const hasDraw = (gamePlay.length === 9) && !winningParam ;
 
   function onHandleSquare(row, col){
 
@@ -68,6 +70,12 @@ function App() {
     });
 
   }
+
+  function rematchGame(){
+    // alert();
+
+    
+  }
   
 
   return (
@@ -80,7 +88,7 @@ function App() {
           
         </ol>
 
-        {winningParam && <GameOver winner={winningParam}  />}
+        {(winningParam || hasDraw) && <GameOver winner={winningParam} hadleRematch={rematchGame} />}
 
         <GameBoard onChangeSquare={onHandleSquare} board={gameBoard}/>
       </div>
